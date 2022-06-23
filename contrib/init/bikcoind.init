@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#
+#  bikcoind The bikcoin core server.
+#
+#
+# chkconfig: 345 80 20
+# description: bikcoind
+# processname: bikcoind
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/bikcoind, see below
+if [ -f /etc/sysconfig/bikcoind ]; then
+        . /etc/sysconfig/bikcoind
+fi
+
+RETVAL=0
+
+prog=bikcoind
+# you can override the lockfile via BIKCOIND_LOCKFILE in /etc/sysconfig/bikcoind
+lockfile=${BIKCOIND_LOCKFILE-/var/lock/subsys/bikcoind}
+
+# bikcoind defaults to /usr/bin/bikcoind, override with BIKCOIND_BIN
+bikcoind=${BIKCOIND_BIN-/usr/bin/bikcoind}
+
+# bikcoind opts default to -disablewallet, override with BIKCOIND_OPTS
+bikcoind_opts=${BIKCOIND_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $bikcoind $bikcoind_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,33 @@
+# /etc/conf.d/bikcoind: config file for /etc/init.d/bikcoind
+
+# Config file location
+#BIKCOIND_CONFIGFILE="/etc/bikcoin/bikcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $BIKCOIND_USER)
+#BIKCOIND_PIDDIR="/var/run/bikcoind"
+
+# What filename to give the pidfile
+#BIKCOIND_PIDFILE="${BIKCOIND_PIDDIR}/bikcoind.pid"
+
+# Where to write bikcoind data (be mindful that the blockchain is large)
+#BIKCOIND_DATADIR="/var/lib/bikcoind"
+
+# User and group to own bikcoind process
+#BIKCOIND_USER="bikcoin"
+#BIKCOIND_GROUP="bikcoin"
+
+# Path to bikcoind executable
+#BIKCOIND_BIN="/usr/bin/bikcoind"
+
+# Nice value to run bikcoind under
+#BIKCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#BIKCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for bikcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+BIKCOIND_SIGTERM_TIMEOUT=60
