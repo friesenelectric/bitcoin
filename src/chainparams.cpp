@@ -48,8 +48,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "GSW win 2022 NBA Championship";
-    const CScript genesisOutputScript = CScript() << ParseHex("04ec33631fc82bebae66dd6b27121ee0162498a4beebf9a753a0038b372a5376a11bae2e188e4bae1352f7e959457afc98552b0f097c3ca81bbf3bbf7b1bb3ac7f") << OP_CHECKSIG;
+    const char* pszTimestamp = "warriors 2022 NBA Champs";
+    const CScript genesisOutputScript = CScript() << ParseHex("04ba2a81c3a2321e2cbd217fe8b18c4ade7eb02a333fa360a1a918f3bdbebbf797e2d0aacaaa861c0aa0342e871f0565f9062a42255b60ce3e15b4b8e263e51e6f") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -80,7 +80,7 @@ public:
         consensus.BIP34Hash = uint256();
         consensus.BIP65Height = 0;
         consensus.BIP66Height = 0;
-        consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -119,10 +119,10 @@ public:
         nDefaultPort = 8433;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1655751600, 0x00000000, 545259519, 1, 1000000 * COIN);
+        genesis = CreateGenesisBlock(1656096069, 0x04, 545259519, 1, 1000000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x2ffe262d28d4cce09b37456d14d5a780b939283389239c245289c27a71f5e964"));
-        assert(genesis.hashMerkleRoot == uint256S("0xde9d8ef5ca7eb759c9356afe8a15858903d2f85e8c8f09f30f803660a7a1f5e8"));
+        assert(consensus.hashGenesisBlock == uint256S("0x4ba16559a2855a6eb599c9592c8863e176b14c0100cdf6c72dc76e369e4e9054"));
+        assert(genesis.hashMerkleRoot == uint256S("0xf66ab9b0648d482f869a3b28e12ab9ca3ee627eaa3af27ee20d6cd8e7d320aa4"));
 
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
@@ -209,10 +209,10 @@ public:
         nDefaultPort = 18433;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1655751600, 0x00000000, 545259519, 1, 1000000 * COIN);
+        genesis = CreateGenesisBlock(1656096069, 0x04, 545259519, 1, 1000000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x2ffe262d28d4cce09b37456d14d5a780b939283389239c245289c27a71f5e964"));
-        assert(genesis.hashMerkleRoot == uint256S("0xde9d8ef5ca7eb759c9356afe8a15858903d2f85e8c8f09f30f803660a7a1f5e8"));
+        assert(consensus.hashGenesisBlock == uint256S("0x4ba16559a2855a6eb599c9592c8863e176b14c0100cdf6c72dc76e369e4e9054"));
+        assert(genesis.hashMerkleRoot == uint256S("0xf66ab9b0648d482f869a3b28e12ab9ca3ee627eaa3af27ee20d6cd8e7d320aa4"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -293,11 +293,11 @@ public:
         nDefaultPort = 18544;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1655751600, 0x00000000, 545259519, 1, 1000000 * COIN);
+        genesis = CreateGenesisBlock(1656096069, 0x04, 545259519, 1, 1000000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x2ffe262d28d4cce09b37456d14d5a780b939283389239c245289c27a71f5e964"));
-        assert(genesis.hashMerkleRoot == uint256S("0xde9d8ef5ca7eb759c9356afe8a15858903d2f85e8c8f09f30f803660a7a1f5e8"));
-        
+        assert(consensus.hashGenesisBlock == uint256S("0x4ba16559a2855a6eb599c9592c8863e176b14c0100cdf6c72dc76e369e4e9054"));
+        assert(genesis.hashMerkleRoot == uint256S("0xf66ab9b0648d482f869a3b28e12ab9ca3ee627eaa3af27ee20d6cd8e7d320aa4"));
+
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
 
@@ -318,7 +318,7 @@ public:
         };
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,107);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(185);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,85);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
